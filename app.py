@@ -46,7 +46,8 @@ def handler(event, context):
 
     print("training IsolationForest")
     clf_params = body['clf_params']
-    clf = IsolationForest(random_state=0, **clf_params).fit(X)
+    clf = IsolationForest(random_state=0, **clf_params)
+    clf.fit(X)
     anomaly = clf.score_samples(X) # [-1, 1]
     anomaly = anomaly*(-0.5) + 0.5
    
