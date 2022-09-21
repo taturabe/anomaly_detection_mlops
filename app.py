@@ -51,7 +51,7 @@ def handler(event, context):
     anomaly = clf.score_samples(X) # [-1, 1]
     anomaly = anomaly*(-0.5) + 0.5
    
-    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y%m%d%H%M%S')
+    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y%m%d%H%M%S%f')
     jobname = body['base_jobname'] + now
     write_dir = os.path.join('/tmp', jobname)
     if os.path.exists(write_dir):

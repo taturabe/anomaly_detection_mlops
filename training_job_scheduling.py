@@ -47,7 +47,7 @@ request_dict = {'body':{
             }
 
 
-function_name='sklearn-function-20220920182936'
+function_name='sklearn-function-20220921140734'
 search_prefix = 'anomaly_detection_mlops/data/data1/'
 s3_client = boto3.client('s3')
 lambda_client = boto3.client('lambda')
@@ -74,6 +74,6 @@ def lambda_exec_loop(pref_fn_tuple):
 # invoke lambda func. with multi process
 if __name__ == '__main__':
     with Pool() as pool:
-        pool.map(lambda_exec_loop, data_prefix_filename_tuple_list)
+        pool.map(lambda_exec_loop, data_prefix_filename_tuple_list[:1])
         #pool.map(f, range(9))
 
